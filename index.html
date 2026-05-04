@@ -1,4 +1,4 @@
-j<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -7,166 +7,191 @@ j<!DOCTYPE html>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: #0a0a0a;
+      color: #e5e5e5;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 20px;
+      align-items: center;
+      background-image: 
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
-    .page { display: none; width: 100%; max-width: 400px; text-align: center; }
-    .page.active { display: block; animation: fadeIn 0.5s; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-    
+    .container {
+      background: #111111;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 40px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 40px rgba(239, 68, 68, 0.15);
+      text-align: center;
+    }
     .logo-png {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 24px;
-      object-fit: contain;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      filter: drop-shadow(0 0 15px #ef4444);
     }
-    
-    h1 { font-size: 28px; margin-bottom: 8px; color: #ef4444; }
-    p { color: #94a3b8; margin-bottom: 24px; }
+    h1 { font-size: 28px; margin-bottom: 8px; color: #ef4444; text-shadow: 0 0 10px #ef444460; }
+    p { color: #9ca3af; margin-bottom: 24px; font-size: 14px; }
     input {
-      width: 100%; padding: 12px; margin-bottom: 16px;
-      background: #1e293b; border: 1px solid #334155;
-      border-radius: 8px; color: #e2e8f0; font-size: 16px;
+      width: 100%; padding: 12px 16px; margin-bottom: 16px;
+      background: #1a1a1a; border: 1px solid #333;
+      border-radius: 12px; color: #e5e5e5; font-size: 14px;
+      outline: none; transition: 0.2s;
     }
+    input:focus { border-color: #ef4444; box-shadow: 0 0 0 2px #ef444440; }
     button {
-      width: 100%; padding: 12px; background: #ef4444;
-      border: none; border-radius: 8px; color: white;
+      width: 100%; padding: 14px; background: #ef4444;
+      border: none; border-radius: 12px; color: white;
       font-size: 16px; font-weight: 600; cursor: pointer;
-      margin-bottom: 12px;
+      margin-bottom: 12px; transition: 0.2s;
+      box-shadow: 0 0 15px #ef444440;
     }
-    button:active { background: #dc2626; }
-    video { 
-      width: 100%; 
-      border-radius: 12px; 
+    button:hover { transform: translateY(-2px); box-shadow: 0 0 20px #ef444460; }
+    button:active { background: #dc2626; transform: translateY(0); }
+    video {
+      width: 100%;
+      border-radius: 12px;
       margin-bottom: 16px;
       border: 2px solid #334155;
+      box-shadow: 0 0 20px #00000060;
     }
-    .btn-secondary { background: #1e40af; }
+    .btn-secondary {
+      background: #1e40af;
+      box-shadow: 0 0 15px #1e40af40;
+    }
+    .btn-secondary:hover { box-shadow: 0 0 20px #1e40af60; }
     .btn-secondary:active { background: #1e3a8a; }
-    .reyx-tag { 
-      margin-top: 20px; 
-      font-size: 18px; 
+    .reyx-tag {
+      margin-top: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #ef4444;
+      text-shadow: 0 0 10px #ef444460;
     }
+    .btn-logout {
+      background: #374151;
+      box-shadow: none;
+      margin-top: 20px;
+    }
+    .error-msg {
+      color: #ef4444;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    #loginPage, #introPage, #welcomePage { display: none; }
+    #loginPage.active, #introPage.active, #welcomePage.active { display: block; }
   </style>
 </head>
 <body>
+  <div class="container">
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="active">
+      <img src="https://i.ibb.co/7QpKsCX/spiderman-logo.png" alt="Logo" class="logo-png">
+      <h1>REYX v1.5</h1>
+      <p>Masukkan password untuk melanjutkan</p>
+      <input type="password" id="passwordInput" placeholder="Password">
+      <div class="error-msg" id="errorMsg">Password salah bro!</div>
+      <button onclick="checkLogin()">Masuk</button>
+    </div>
 
-  <!-- PAGE 1: LOGIN -->
-  <div id="loginPage" class="page active">
-    <!-- GANTI LINK LOGO PNG LU DI SINI BRO -->
-    <img src="https://i.ibb.co/7QpKsCX/spiderman-logo.png" alt="Logo" class="logo-png">
-    <h1>REYX v1.5</h1>
-    <p>Masuk buat lanjut</p>
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="checkLogin()">Login</button>
+    <!-- INTRO VIDEO PAGE -->
+    <div id="introPage">
+      <video id="introVideo" playsinline>
+        <source src="https://files.catbox.moe/xxx.mp4" type="video/mp4">
+      </video>
+      <button onclick="skipIntro()">Skip Intro</button>
+    </div>
+
+    <!-- WELCOME PAGE -->
+    <div id="welcomePage">
+      <img src="https://i.ibb.co/7QpKsCX/spiderman-logo.png" alt="Logo" class="logo-png">
+      <h1>Selamat Datang di REYX</h1>
+      <p>Enjoy your time bro 🗿</p>
+      <button class="btn-secondary" onclick="toggleMusic()" id="musicBtn">Putar Musik</button>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+      <div class="reyx-tag">REYX v1.5</div>
+    </div>
   </div>
 
-  <!-- PAGE 2: INTRO -->
-  <div id="introPage" class="page">
-    <h1>Intro REYX</h1>
-    <p>Klik buat mulai intro</p>
-    <video id="introVideo" playsinline>
-      <source src="https://files.catbox.moe/wg0o7b.mp4" type="video/mp4">
-    </video>
-    <button class="btn-secondary" onclick="playIntro()">▶️ Play Intro</button>
-    <button class="btn-secondary" onclick="skipIntro()">Skip Intro</button>
-  </div>
-
-  <!-- PAGE 3: WELCOME - VIDEO ADA SUARA + LOOP 🗿 -->
-  <div id="welcomePage" class="page">
-    <img src="https://i.ibb.co/7QpKsCX/spiderman-logo.png" alt="Logo" class="logo-png">
-    <h1>Welcome</h1>
-    <p>Ini project reyx</p>
-    
-    <!-- VIDEO LOOP + ADA SUARA - UDAH GW HAPUS muted -->
-    <video id="mainVideo" autoplay loop playsinline>
-      <source src="https://files.catbox.moe/bauw96.mp4" type="video/mp4">
-    </video>
-    
-    <div class="reyx-tag">@reyx</div>
-    
-    <button class="btn-secondary" onclick="toggleMusic()" id="musicBtn" style="margin-top:24px;">🔊 Pause Musik</button>
-    <button class="btn-secondary" onclick="toggleVideo()" id="videoBtn">🔇 Mute Video</button>
-  </div>
-
-  <!-- MUSIK BACKGROUND -->
   <audio id="bgMusic" loop>
-    <source src="https://files.catbox.moe/qj8v4q.mp3" type="audio/mpeg">
+    <source src="https://files.catbox.moe/xxx.mp3" type="audio/mpeg">
   </audio>
 
   <script>
+    const PASS = "reyx123";
     const loginPage = document.getElementById('loginPage');
     const introPage = document.getElementById('introPage');
     const welcomePage = document.getElementById('welcomePage');
     const introVideo = document.getElementById('introVideo');
-    const mainVideo = document.getElementById('mainVideo');
     const bgMusic = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
-    const videoBtn = document.getElementById('videoBtn');
-    
+    let musicPlaying = false;
+
+    if (localStorage.getItem('reyxLogin') === 'true') {
+      showWelcome();
+    }
+
     function checkLogin() {
-      const pass = document.getElementById('password').value;
-      if(pass === 'reyx123') {
-        loginPage.classList.remove('active');
-        introPage.classList.add('active');
+      const pass = document.getElementById('passwordInput').value;
+      const errorMsg = document.getElementById('errorMsg');
+      if (pass === PASS) {
+        localStorage.setItem('reyxLogin', 'true');
+        errorMsg.style.display = 'none';
+        playIntro();
       } else {
-        alert('Password salah bro 🗿');
+        errorMsg.style.display = 'block';
+        document.getElementById('passwordInput').value = '';
       }
     }
-    
+
     function playIntro() {
+      loginPage.classList.remove('active');
+      introPage.classList.add('active');
       introVideo.play();
-      bgMusic.volume = 0.3;
-      bgMusic.play();
+      introVideo.onended = showWelcome;
     }
-    
+
     function skipIntro() {
       introVideo.pause();
-      goToWelcome();
+      showWelcome();
     }
-    
-    introVideo.onended = function() {
-      goToWelcome();
-    };
-    
-    function goToWelcome() {
+
+    function showWelcome() {
       introPage.classList.remove('active');
       welcomePage.classList.add('active');
-      bgMusic.volume = 0.3; // musik agak pelan biar gak tabrakan sama suara video
-      bgMusic.play();
-      mainVideo.volume = 0.8; // suara video lebih kenceng
-      mainVideo.play();
+      loginPage.classList.remove('active');
     }
-    
-    function toggleMusic() {
-      if(bgMusic.paused) {
-        bgMusic.play();
-        musicBtn.textContent = '🔇 Pause Musik';
-      } else {
-        bgMusic.pause();
-        musicBtn.textContent = '🔊 Play Musik';
-      }
-    }
-    
-    function toggleVideo() {
-      if(mainVideo.muted) {
-        mainVideo.muted = false;
-        videoBtn.textContent = '🔇 Mute Video';
-      } else {
-        mainVideo.muted = true;
-        videoBtn.textContent = '🔊 Unmute Video';
-      }
-    }
-  </script>
 
+    function toggleMusic() {
+      if (musicPlaying) {
+        bgMusic.pause();
+        musicBtn.textContent = 'Putar Musik';
+      } else {
+        bgMusic.play();
+        musicBtn.textContent = 'Pause Musik';
+      }
+      musicPlaying = !musicPlaying;
+    }
+
+    function logout() {
+      localStorage.removeItem('reyxLogin');
+      bgMusic.pause();
+      musicPlaying = false;
+      musicBtn.textContent = 'Putar Musik';
+      welcomePage.classList.remove('active');
+      loginPage.classList.add('active');
+      document.getElementById('passwordInput').value = '';
+    }
+
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') checkLogin();
+    });
+  </script>
 </body>
 </html>
